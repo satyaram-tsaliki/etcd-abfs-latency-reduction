@@ -1,93 +1,87 @@
-# PaperFour
+# 📚 ETCD Notification Latency Reduction Using Approximate Breadth First Search (ABFS) Graph Algorithm
 
+## 📝 Abstract
 
+This research introduces an optimized implementation of **ETCD’s watch mechanism**, employing an **Approximate Breadth-First Search (ABFS)** graph algorithm to **reduce notification latency** in distributed systems. Traditional Levelized Breadth-First Search (BFS) algorithms used in ETCD’s watch mechanism suffer from high latency as the system scales. The proposed **ABFS algorithm**, developed in **Go**, leverages probabilistic traversal strategies to minimize computational overhead, reduce graph traversal time, and improve event notification efficiency.  
+Experimental analysis was performed on **ETCD clusters** of varying sizes (16GB to 64GB), with significant improvements in **notification latency**, **throughput**, **CPU usage**, and **memory consumption** compared to the existing BFS-based watch mechanism.
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 📚 Publication Details
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- **Journal:** International Journal of Innovative Research in Engineering & Multidisciplinary Physical Sciences (IJIRMPS)  
+- **Publication Number:** 231785  
+- **Link:** [Read the Paper](https://www.ijirmps.org/research-paper.php?id=231785)  
+- **ISSN:** 2349-7300  
+- **Impact Factor:** 9.907  
+- **Publication Info:** Volume 11, Issue 5, September-October 2023  
 
-## Add your files
+---
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## 🔑 Key Contributions
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/gitlab3225912/paperfour.git
-git branch -M main
-git push -uf origin main
-```
+✅ **Cluster Infrastructure Optimization:** Configured and optimized **multi-node ETCD clusters** ranging from 3-node to 10-node configurations. Each master node had 32 CPUs, 64GB RAM, and 500GB storage, while worker nodes had 24 CPUs, 32GB RAM, and 350GB storage.  
 
-## Integrate with your tools
+✅ **ABFS Algorithm Implementation:** Developed and implemented an **Approximate Breadth-First Search (ABFS)** graph traversal algorithm in **Go**, offering a **scalable and efficient watch mechanism** that lowers **notification latency** and **reduces resource utilization**.  
 
-- [ ] [Set up project integrations](https://gitlab.com/gitlab3225912/paperfour/-/settings/integrations)
+✅ **Comprehensive Performance Analysis:** Conducted **quantitative analysis** on **notification latency**, **throughput**, **memory usage**, and **CPU utilization**, presenting results through **tables and graphical visualizations** comparing ABFS against traditional Levelized BFS approaches.  
 
-## Collaborate with your team
+✅ **Future Research Directions:** Proposed further optimization of **graph traversal algorithms** and **scalability improvements**, addressing **distributed system challenges** such as **dynamic graph handling**, **limited bandwidth**, and **fault tolerance**.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+---
 
-## Test and Deploy
+## 📈 Relevance & Impact
 
-Use the built-in continuous integration in GitLab.
+🚀 **Enhanced Notification Latency:** The ABFS algorithm reduced notification latency by up to **40%**, achieving faster **event propagation** in ETCD clusters ranging from **16GB to 64GB**.  
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+📊 **Scalability & Resource Efficiency:** The system demonstrated **lower CPU and memory usage**, improving **scalability** and **real-time performance** for distributed applications, particularly in **Kubernetes** clusters.  
 
-***
+💡 **Foundation for Future Innovations:** The research serves as a **benchmark** for future work in **graph algorithms** and **distributed notification systems**, particularly for **large-scale, fault-tolerant architectures**.
 
-# Editing this README
+---
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## 📊 Experimental Results (Summary)
 
-## Suggestions for a good README
+### Levelized BFS (Baseline)
+| ETCD Size (GB) | Notification Latency (ms) | Throughput (notifications/s) | Memory Usage (MB) | CPU Usage (%) |
+|----------------|---------------------------|-------------------------------|-------------------|---------------|
+| 16GB           | 9.5                       | 1140                         | 60                | 25            |
+| 24GB           | 10.3                      | 1085                         | 68                | 28            |
+| 32GB           | 11                        | 1035                         | 77                | 31            |
+| 40GB           | 11.8                      | 985                          | 85                | 33            |
+| 48GB           | 12.6                      | 930                          | 92                | 35            |
+| 64GB           | 14                        | 830                          | 107               | 38            |
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Proposed ABFS (Optimized)
+| ETCD Size (GB) | Notification Latency (ms) | Throughput (notifications/s) | Memory Usage (MB) | CPU Usage (%) |
+|----------------|---------------------------|-------------------------------|-------------------|---------------|
+| 16GB           | 5.2                       | 1500                         | 42                | 18            |
+| 24GB           | 5.8                       | 1450                         | 48                | 20            |
+| 32GB           | 6.3                       | 1400                         | 55                | 23            |
+| 40GB           | 6.9                       | 1350                         | 61                | 25            |
+| 48GB           | 7.5                       | 1300                         | 68                | 27            |
+| 64GB           | 8.2                       | 1200                         | 80                | 30            |
 
-## Name
-Choose a self-explaining name for your project.
+📊 **Observation:**  
+- **Notification latency** was **reduced by up to 40%** compared to Levelized BFS.  
+- **Throughput increased** significantly, showing better scalability with **lower CPU and memory consumption**.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+---
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## 📌 Citation
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+If you use this work, please cite it as follows:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+**ETCD Notification Latency Reduction Using Approximate Breadth First Search (ABFS) Graph Algorithm**. Satya Ram Tsaliki, Dr. B. Purnachandra Rao. 2023. *International Journal of Innovative Research in Engineering & Multidisciplinary Physical Sciences (IJIRMPS)*, Volume 11, Issue 5, September-October 2023. Available at: [https://www.ijirmps.org/research-paper.php?id=231785](https://www.ijirmps.org/research-paper.php?id=231785)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+```bibtex
+@article{tsaliki2023abfs,
+  title={ETCD Notification Latency Reduction Using Approximate Breadth First Search (ABFS) Graph Algorithm},
+  author={Satya Ram Tsaliki and B. Purnachandra Rao},
+  journal={International Journal of Innovative Research in Engineering \& Multidisciplinary Physical Sciences (IJIRMPS)},
+  volume={11},
+  number={5},
+  year={2023},
+  issn={2349-7300},
+  url={https://www.ijirmps.org/research-paper.php?id=231785}
+}
